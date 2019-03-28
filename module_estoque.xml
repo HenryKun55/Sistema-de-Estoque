@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="module_estoque" default="compile.module.estoque">
+  <dirname property="module.estoque.basedir" file="${ant.file.module_estoque}"/>
+  
+  <property name="module.jdk.home.estoque" value="${project.jdk.home}"/>
+  <property name="module.jdk.bin.estoque" value="${project.jdk.bin}"/>
+  <property name="module.jdk.classpath.estoque" value="${project.jdk.classpath}"/>
+  
+  <property name="compiler.args.estoque" value="-encoding UTF-8 -source 10 -target 10 ${compiler.args}"/>
+  
+  <property name="estoque.output.dir" value="${module.estoque.basedir}/out/production/Estoque"/>
+  <property name="estoque.testoutput.dir" value="${module.estoque.basedir}/out/test/Estoque"/>
+  
+  <path id="estoque.module.bootclasspath">
+    <!-- Paths to be included in compilation bootclasspath -->
+  </path>
+  
+  <path id="estoque.module.production.classpath">
+    <path refid="${module.jdk.classpath.estoque}"/>
+    <pathelement location="${basedir}/lib/jfoenix-9.0.6.jar"/>
+    <path refid="library.jfoenix.classpath"/>
+    <path refid="library.sqlite-jdbc-3.23.1.classpath"/>
+    <path refid="library.ibatis-core-3.0.classpath"/>
+    <path refid="library.hibernate-3.2.6.ga.classpath"/>
+    <path refid="library.spring-beans-3.0.5.release.classpath"/>
+    <path refid="library.spring-orm-2.5.1.classpath"/>
+    <path refid="library.spring-tx-5.0.8.release.classpath"/>
+    <path refid="library.controlsfx-9.0.0.classpath"/>
+  </path>
+  
+  <path id="estoque.runtime.production.module.classpath">
+    <pathelement location="${estoque.output.dir}"/>
+    <pathelement location="${basedir}/lib/jfoenix-9.0.6.jar"/>
+    <path refid="library.jfoenix.classpath"/>
+    <path refid="library.sqlite-jdbc-3.23.1.classpath"/>
+    <path refid="library.ibatis-core-3.0.classpath"/>
+    <path refid="library.hibernate-3.2.6.ga.classpath"/>
+    <path refid="library.spring-beans-3.0.5.release.classpath"/>
+    <path refid="library.spring-orm-2.5.1.classpath"/>
+    <path refid="library.spring-tx-5.0.8.release.classpath"/>
+    <path refid="library.controlsfx-9.0.0.classpath"/>
+  </path>
+  
+  <path id="estoque.module.classpath">
+    <path refid="${module.jdk.classpath.estoque}"/>
+    <pathelement location="${estoque.output.dir}"/>
+    <pathelement location="${basedir}/lib/jfoenix-9.0.6.jar"/>
+    <path refid="library.jfoenix.classpath"/>
+    <path refid="library.sqlite-jdbc-3.23.1.classpath"/>
+    <path refid="library.ibatis-core-3.0.classpath"/>
+    <path refid="library.hibernate-3.2.6.ga.classpath"/>
+    <path refid="library.spring-beans-3.0.5.release.classpath"/>
+    <path refid="library.spring-orm-2.5.1.classpath"/>
+    <path refid="library.spring-tx-5.0.8.release.classpath"/>
+    <path refid="library.controlsfx-9.0.0.classpath"/>
+  </path>
+  
+  <path id="estoque.runtime.module.classpath">
+    <pathelement location="${estoque.testoutput.dir}"/>
+    <pathelement location="${estoque.output.dir}"/>
+    <pathelement location="${basedir}/lib/jfoenix-9.0.6.jar"/>
+    <path refid="library.jfoenix.classpath"/>
+    <path refid="library.sqlite-jdbc-3.23.1.classpath"/>
+    <path refid="library.ibatis-core-3.0.classpath"/>
+    <path refid="library.hibernate-3.2.6.ga.classpath"/>
+    <path refid="library.spring-beans-3.0.5.release.classpath"/>
+    <path refid="library.spring-orm-2.5.1.classpath"/>
+    <path refid="library.spring-tx-5.0.8.release.classpath"/>
+    <path refid="library.controlsfx-9.0.0.classpath"/>
+  </path>
+  
+  
+  <patternset id="excluded.from.module.estoque">
+    <patternset refid="ignored.files"/>
+  </patternset>
+  
+  <patternset id="excluded.from.compilation.estoque">
+    <patternset refid="excluded.from.module.estoque"/>
+  </patternset>
+  
+  <path id="estoque.module.sourcepath">
+    <dirset dir="${module.estoque.basedir}">
+      <include name="src"/>
+    </dirset>
+  </path>
+  
+  
+  <target name="compile.module.estoque" depends="compile.module.estoque.production,compile.module.estoque.tests" description="Compile module Estoque"/>
+  
+  <target name="compile.module.estoque.production" depends="register.custom.compilers" description="Compile module Estoque; production classes">
+    <mkdir dir="${estoque.output.dir}"/>
+    <javac2 destdir="${estoque.output.dir}" debug="${compiler.debug}" nowarn="${compiler.generate.no.warnings}" memorymaximumsize="${compiler.max.memory}" fork="true" executable="${module.jdk.bin.estoque}/javac">
+      <compilerarg line="${compiler.args.estoque}"/>
+      <bootclasspath refid="estoque.module.bootclasspath"/>
+      <classpath refid="estoque.module.production.classpath"/>
+      <src refid="estoque.module.sourcepath"/>
+      <patternset refid="excluded.from.compilation.estoque"/>
+    </javac2>
+    
+    <copy todir="${estoque.output.dir}">
+      <fileset dir="${module.estoque.basedir}/src">
+        <patternset refid="compiler.resources"/>
+        <type type="file"/>
+      </fileset>
+    </copy>
+  </target>
+  
+  <target name="compile.module.estoque.tests" depends="register.custom.compilers,compile.module.estoque.production" description="compile module Estoque; test classes" unless="skip.tests"/>
+  
+  <target name="clean.module.estoque" description="cleanup module">
+    <delete dir="${estoque.output.dir}"/>
+    <delete dir="${estoque.testoutput.dir}"/>
+  </target>
+</project>

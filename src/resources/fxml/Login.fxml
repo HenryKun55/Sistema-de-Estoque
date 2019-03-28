@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXSpinner?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXToggleButton?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox alignment="CENTER" prefHeight="238.0" prefWidth="472.0" stylesheets="@css/Login.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.controller.LoginController">
+   <children>
+      <Region opacity="0.0" prefHeight="32.0" prefWidth="299.0" />
+      <HBox alignment="TOP_CENTER" prefHeight="26.0" prefWidth="422.0">
+         <children>
+            <JFXTextField fx:id="login" alignment="CENTER" depthTest="DISABLE" focusColor="BLACK" labelFloat="true" prefHeight="26.0" prefWidth="146.4" promptText="Login" unFocusColor="BLACK">
+               <font>
+                  <Font name="Arial" size="14.0" />
+               </font>
+               <HBox.margin>
+                  <Insets bottom="5.0" />
+               </HBox.margin>
+            </JFXTextField>
+         </children>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+      </HBox>
+      <Region focusTraversable="true" layoutX="10.0" layoutY="10.0" opacity="0.0" prefHeight="32.0" prefWidth="299.0" />
+      <HBox alignment="TOP_CENTER" prefHeight="0.0" prefWidth="472.0">
+         <children>
+            <VBox prefHeight="85.0" prefWidth="146.0">
+               <children>
+                  <JFXPasswordField fx:id="senha" alignment="CENTER" focusColor="BLACK" labelFloat="true" onKeyTyped="#labelSenhaProperty" prefHeight="26.0" prefWidth="180.0" promptText="Senha" unFocusColor="BLACK">
+                     <font>
+                        <Font name="Arial" size="14.0" />
+                     </font>
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                  </JFXPasswordField>
+                  <Label fx:id="labelSenha" textFill="#999999" visible="false">
+                     <font>
+                        <Font name="Arial Italic" size="14.0" />
+                     </font>
+                     <VBox.margin>
+                        <Insets top="10.0" />
+                     </VBox.margin>
+                  </Label>
+                  <JFXToggleButton fx:id="toggle" onAction="#btnToggle" prefHeight="24.0" prefWidth="146.0" text="Mostrar Senha" textAlignment="CENTER" toggleColor="#00bcd4" toggleLineColor="#2ed3e2">
+                     <font>
+                        <Font name="System Italic" size="12.0" />
+                     </font>
+                  </JFXToggleButton>
+               </children>
+            </VBox>
+         </children>
+      </HBox>
+      <Region prefHeight="30.0" prefWidth="299.0" />
+      <HBox alignment="TOP_CENTER" prefHeight="82.0" prefWidth="472.0">
+         <children>
+            <JFXButton fx:id="btnEntrar" onAction="#handleBtnEntrar" prefHeight="32.0" prefWidth="200.0" ripplerFill="RED" text="Entrar" />
+         </children>
+      </HBox>
+      <JFXSpinner fx:id="jfxSpinner" prefHeight="58.0" prefWidth="472.0" startingAngle="0.0">
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+      </JFXSpinner>
+      <AnchorPane fx:id="anchorPane" prefHeight="12.0" prefWidth="472.0" />
+   </children>
+   <padding>
+      <Insets top="10.0" />
+   </padding>
+</VBox>

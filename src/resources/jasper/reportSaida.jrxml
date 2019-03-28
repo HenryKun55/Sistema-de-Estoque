@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reportSaida" language="groovy" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isSummaryNewPage="true" uuid="d7dfd60d-610b-4a7a-b083-311e2dacdcd1">
+	<property name="ireport.zoom" value="2.0526324729228267"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\Flavio\\Estoque\\src\\resources\\jasper\\"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="idSaida" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$F{id_saida}]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+outputs.id_saida,
+clients.name,
+outputs.created_at
+FROM products
+INNER JOIN outputs on products.id = outputs.product_id
+INNER JOIN clients on outputs.client_id = clients.id
+GROUP BY outputs.id_saida]]>
+	</queryString>
+	<field name="id_saida" class="java.lang.Object"/>
+	<field name="name" class="java.lang.Object"/>
+	<field name="created_at" class="java.lang.String"/>
+	<background>
+		<band/>
+	</background>
+	<title>
+		<band height="72">
+			<frame>
+				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="9c121a90-92d2-41b5-a1e4-af72ccc900e1"/>
+				<staticText>
+					<reportElement x="20" y="20" width="304" height="43" forecolor="#FFFFFF" uuid="dfb4ce9a-2914-4c7f-90b6-10901b55c560"/>
+					<textElement>
+						<font size="34" isBold="true"/>
+					</textElement>
+					<text><![CDATA[Relatório de Saída]]></text>
+				</staticText>
+				<staticText>
+					<reportElement x="20" y="0" width="34" height="20" forecolor="#FFFFFF" uuid="b0b475db-0a28-4ae7-ac03-04fb011131df"/>
+					<textElement verticalAlignment="Middle">
+						<font size="14" isBold="false"/>
+					</textElement>
+					<text><![CDATA[Data: ]]></text>
+				</staticText>
+				<textField pattern="dd/MM/yyyy">
+					<reportElement x="54" y="0" width="100" height="20" forecolor="#FFFFFF" uuid="0cd0ad0c-99f2-4881-b311-f7b628633757"/>
+					<textElement verticalAlignment="Middle">
+						<font size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="13"/>
+	</pageHeader>
+	<detail>
+		<band height="20">
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="20" uuid="4d994059-2606-4e31-9770-0232d250ba7f"/>
+				<subreportParameter name="SUBREPORT_DIR">
+					<subreportParameterExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="createdAt">
+					<subreportParameterExpression><![CDATA[$F{created_at}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="name">
+					<subreportParameterExpression><![CDATA[$F{name}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="idSaida">
+					<subreportParameterExpression><![CDATA[$F{id_saida}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "reportSaida_subreport.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<columnFooter>
+		<band/>
+	</columnFooter>
+	<pageFooter>
+		<band height="17">
+			<textField>
+				<reportElement mode="Opaque" x="0" y="0" width="515" height="17" backcolor="#E6E6E6" uuid="fa51ddf8-c2bb-43be-8313-e15aca77359f"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Página "+$V{PAGE_NUMBER}+" de"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement mode="Opaque" x="515" y="0" width="40" height="17" backcolor="#E6E6E6" uuid="b695bf33-afd2-47c6-a841-275c76c79659"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement x="0" y="0" width="100" height="17" uuid="7ca7c7e2-1d62-4f12-bbba-5da5df7e58b5"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement mode="Transparent" x="-20" y="-1" width="595" height="1" isRemoveLineWhenBlank="true" forecolor="#666666" uuid="87c515d6-8d18-4b25-91e0-6d762671013f"/>
+			</line>
+		</band>
+	</pageFooter>
+	<summary>
+		<band/>
+	</summary>
+</jasperReport>

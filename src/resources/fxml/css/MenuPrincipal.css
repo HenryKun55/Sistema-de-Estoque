@@ -1,0 +1,85 @@
+
+.jfx-tab-pane .tab-selected-line {
+    -fx-pref-height:0;
+}
+
+.jfx-tab-pane .tab:selected .tab-label{
+    -fx-text-fill:black;
+    -fx-background-color: white;
+}
+
+#btnIncluirProduto ,#btnIncluirCliente ,#btnAlteraProduto ,#btnIncluirEntrada ,#btnIncluirCategoria ,#btnIncluirSaida ,#btnIncluirUsuario ,#btnRelatorioEntrada, #btnRelatorioSaida ,#btnRelatorioCategoria ,#btnRelatorioInvetario ,#btnIncluirUnidade {
+    -fx-background-color:#00bcd4;
+    -fx-background-insets: 0,1,2,3;
+    -fx-background-radius: 3,2,2,2;
+    -fx-text-fill: white;
+    -fx-font-size: 12px;
+}
+
+#lblRelatorio{
+    -fx-text-fill:#00bcd4;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+}
+
+.split-pane *.split-pane-divider {
+    -fx-padding: 0 0 0 0;
+}
+
+#listProduto, #columnAcion{
+    -fx-alignment: CENTER;
+}
+
+/** Row Product Selected  */
+
+.tree-table-row-cell {
+    -fx-background-color: -fx-table-cell-border-color;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em;
+    -fx-text-fill: -fx-text-inner-color;
+    -fx-cell-size: 100px;
+    -fx-font-size: 20px;
+}
+
+.table-column {
+  -fx-alignment: CENTER_RIGHT;
+}
+
+#columnAction{
+  -fx-alignment: CENTER;
+}
+
+.tree-table-row-cell:selected {
+    -fx-background-color: -fx-focus-color, -fx-cell-focus-inner-border, -fx-focus-color;
+    -fx-background-insets: 0, 1, 2;
+}
+
+.tree-table-row-cell:odd {
+    -fx-background-color: -fx-table-cell-border-color, derive(-fx-control-inner-background,-5%);
+    -fx-background-insets: 0, 0 0 1 0;
+}
+
+.tree-table-row-cell:selected:odd {
+    -fx-background-color: -fx-focus-color, -fx-cell-focus-inner-border, -fx-focus-color;
+    -fx-background-insets: 0, 1, 2;
+}
+
+/** Anchor Pane e SnackBar*/
+.jfx-snackbar-content{
+    -fx-background-color:#00bcd4; /* AzulClarinho */
+    -fx-font-size:12px;
+    -fx-stroke:white;
+}
+
+.jfx-snackbar-toast {
+    -fx-text-fill: white;
+}
+
+.jfx-snackbar-action {
+    -fx-background-color:#006572;
+    -fx-text-fill: white;
+}
+
+.#anchorPane {
+    -fx-border-color:transparent;
+}

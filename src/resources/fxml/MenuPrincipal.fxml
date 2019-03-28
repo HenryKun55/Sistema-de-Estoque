@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXToggleButton?>
+<?import com.jfoenix.controls.JFXTreeTableView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.AreaChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox fx:id="vBox" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" stylesheets="@css/MenuPrincipal.css" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fxml.controller.MenuPrincipal">
+   <children>
+      <JFXTabPane fx:id="jfxTabPane" nodeOrientation="LEFT_TO_RIGHT" prefHeight="416.0" prefWidth="600.0">
+         <tabs>
+            <Tab fx:id="tabPrincipal" text="Principal">
+               <content>
+                  <SplitPane dividerPositions="0.1" prefHeight="357.0" prefWidth="600.0">
+                     <items>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="341.0" prefWidth="147.0">
+                           <children>
+                              <JFXRadioButton layoutX="14.0" layoutY="65.0" text="Melhor Ano" />
+                              <JFXComboBox fx:id="comboBox" layoutX="2.0" layoutY="14.0" prefHeight="28.0" prefWidth="142.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                           <children>
+                              <AreaChart fx:id="areaChart">
+                                 <xAxis>
+                                    <CategoryAxis side="BOTTOM" />
+                                 </xAxis>
+                                 <yAxis>
+                                    <NumberAxis side="LEFT" />
+                                 </yAxis>
+                              </AreaChart>
+                           </children>
+                        </AnchorPane>
+                     </items>
+                  </SplitPane>
+               </content>
+            </Tab>
+            <Tab text="Cadastros">
+               <content>
+                  <JFXTabPane fx:id="subJfxTabPane">
+                     <tabs>
+                        <Tab text="Usuário">
+                           <content>
+                              <VBox prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <Region prefHeight="38.0" prefWidth="600.0" />
+                                    <HBox prefHeight="38.0" prefWidth="600.0">
+                                       <children>
+                                          <JFXTextField fx:id="nomeUsuario" focusColor="BLACK" labelFloat="true" prefHeight="26.0" prefWidth="126.0" promptText="Nome">
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                          </JFXTextField>
+                                          <JFXPasswordField fx:id="senhaUsuario" focusColor="BLACK" labelFloat="true" onKeyTyped="#labelSenhaProperty" prefHeight="26.0" prefWidth="126.0" promptText="Senha">
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                          </JFXPasswordField>
+                                          <JFXButton fx:id="btnIncluirUsuario" onAction="#setBtnInserirUsuario" prefHeight="32.0" prefWidth="54.0" text="Incluir">
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                          </JFXButton>
+                                          <HBox alignment="TOP_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <JFXTextField fx:id="searchUsuario" labelFloat="true" prefHeight="26.0" prefWidth="215.0" promptText="⌕">
+                                                   <HBox.margin>
+                                                      <Insets right="10.0" />
+                                                   </HBox.margin>
+                                                </JFXTextField>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="49.0" prefWidth="600.0">
+                                       <children>
+                                          <JFXToggleButton fx:id="toggle" onAction="#btnToggle" prefHeight="34.0" prefWidth="123.0" size="5.0" text="Mostrar Senha" textAlignment="CENTER" toggleColor="#00bcd4" toggleLineColor="#2ed3e2">
+                                             <font>
+                                                <Font name="System Italic" size="12.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets />
+                                             </HBox.margin>
+                                          </JFXToggleButton>
+                                          <Label fx:id="labelSenha" prefHeight="18.0" prefWidth="126.0" textFill="#999999" visible="false">
+                                             <HBox.margin>
+                                                <Insets left="25.0" top="8.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                       </children>
+                                    </HBox>
+                                    <Region prefHeight="29.0" prefWidth="600.0" />
+                                    <JFXTreeTableView fx:id="listUsuario" prefHeight="276.0" prefWidth="600.0" />
+                                 </children>
+                              </VBox>
+                           </content>
+                        </Tab>
+                        <Tab text="Produtos">
+                           <content>
+                              <VBox fx:id="vboxProduto" prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <Region prefHeight="38.0" prefWidth="600.0" />
+                                    <HBox prefHeight="50.0" prefWidth="600.0">
+                                       <children>
+                                          <JFXTextField fx:id="idProduto" focusColor="BLACK" labelFloat="true" prefHeight="26.0" prefWidth="52.0" promptText="ID">
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                          </JFXTextField>
+                                          <JFXTextField fx:id="nomeProduto" focusColor="BLACK" labelFloat="true" prefHeight="26.0" prefWidth="259.0" promptText="Nome">
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                          </JFXTextField>
+                                          <JFXComboBox fx:id="comboBoxCategoria" labelFloat="true" prefHeight="26.0" prefWidth="126.0" promptText="Categoria">
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                          </JFXComboBox>
+                                          <JFXTextField fx:id="referenciaProduto" labelFloat="true" prefHeight="26.0" prefWidth="135.0" promptText="Referência">
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                          </JFXTextField>
+                                          <JFXButton fx:id="btnIncluirProduto" onAction="#setBtnIncluirProduto" prefHeight="32.0" prefWidth="54.0" text="Incluir">
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                          </JFXButton>
+                                          <HBox alignment="TOP_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <JFXTextField fx:id="searchProduto" labelFloat="true" prefHeight="26.0" prefWidth="215.0" promptText="⌕">
+                                                   <HBox.margin>
+                                                      <Insets right="10.0" />
+                                                   </HBox.margin>
+                                                </JFXTextField>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </HBox>
+                                    <Region prefHeight="29.0" prefWidth="600.0" />
+                                    <JFXTreeTableView fx:id="listProduto" prefHeight="269.0" prefWidth="600.0" />
+                                 </children>
+                              </VBox>
+                           </content>
+                        </Tab>
+                        <Tab text="Clientes">
+                           <content>
+                              <VBox prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <Region prefHeight="38.0" prefWidth="600.0" />
+                                    <HBox prefHeight="50.0" prefWidth="600.0">
+                                       <children>
+                                          <JFXTextField fx:id="nomeCliente" focusColor="BLACK" labelFloat="true" prefHeight="26.0" prefWidth="259.0" promptText="Nome">
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                          </JFXTextField>
+                                          <JFXButton fx:id="btnIncluirCliente" onAction="#setBtnIncluirCliente" prefHeight="32.0" prefWidth="54.0" text="Incluir">
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                          </JFXButton>
+                                          <HBox alignment="TOP_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <JFXTextField fx:id="searchCliente" labelFloat="true" prefHeight="26.0" prefWidth="215.0" promptText="⌕">
+                                                   <HBox.margin>
+                                                      <Insets right="10.0" />
+                                                   </HBox.margin>
+                                                </JFXTextField>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </HBox>
+                                    <Region prefHeight="29.0" prefWidth="600.0" />
+                                    <JFXTreeTableView fx:id="listCliente" prefHeight="276.0" prefWidth="600.0" />
+                                 </children>
+                              </VBox>
+                           </content>
+                        </Tab>
+                        <Tab text="Categoria">
+                           <content>
+                              <VBox prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <Region prefHeight="38.0" prefWidth="600.0" />
+                                    <HBox prefHeight="50.0" prefWidth="600.0">
+                                       <children>
+                                          <JFXTextField fx:id="nomeCategoria" focusColor="BLACK" labelFloat="true" prefHeight="26.0" prefWidth="259.0" promptText="Nome">
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                          </JFXTextField>
+                                          <JFXButton fx:id="btnIncluirCategoria" onAction="#setBtnIncluirCategoria" prefHeight="32.0" prefWidth="54.0" text="Incluir">
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                          </JFXButton>
+                                          <HBox alignment="TOP_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <JFXTextField fx:id="searchCategoria" labelFloat="true" prefHeight="26.0" prefWidth="215.0" promptText="⌕">
+                                                   <HBox.margin>
+                                                      <Insets right="10.0" />
+                                                   </HBox.margin>
+                                                </JFXTextField>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </HBox>
+                                    <Region prefHeight="29.0" prefWidth="600.0" />
+                                    <JFXTreeTableView fx:id="listCategoria" prefHeight="276.0" prefWidth="600.0" />
+                                 </children>
+                              </VBox>
+                           </content>
+                        </Tab>
+                     </tabs>
+                  </JFXTabPane>
+               </content>
+            </Tab>
+            <Tab text="Movimentação">
+               <content>
+                  <JFXTabPane fx:id="subJfxTabPane">
+                     <tabs>
+                        <Tab text="Entrada">
+                           <content>
+                              <VBox fx:id="vboxEntrada" prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <Region prefHeight="38.0" prefWidth="600.0" />
+                                    <HBox prefHeight="50.0" prefWidth="600.0">
+                                       <children>
+                                          <JFXButton fx:id="btnIncluirEntrada" onAction="#setBtnIncluirEntrada" prefHeight="32.0" prefWidth="54.0" text="Incluir">
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                          </JFXButton>
+                                          <HBox alignment="TOP_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <JFXTextField fx:id="searchEntrada" alignment="TOP_LEFT" labelFloat="true" prefHeight="26.0" prefWidth="215.0" promptText="⌕">
+                                                   <HBox.margin>
+                                                      <Insets right="10.0" />
+                                                   </HBox.margin>
+                                                </JFXTextField>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </HBox>
+                                    <Region prefHeight="29.0" prefWidth="600.0" />
+                                    <JFXTreeTableView fx:id="listEntrada" prefHeight="269.0" prefWidth="600.0" />
+                                 </children>
+                              </VBox>
+                           </content>
+                        </Tab>
+                        <Tab text="Saída">
+                           <content>
+                              <VBox fx:id="vboxSaida" prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <Region prefHeight="38.0" prefWidth="600.0" />
+                                    <HBox prefHeight="50.0" prefWidth="600.0">
+                                       <children>
+                                          <JFXButton fx:id="btnIncluirSaida" onAction="#setBtnIncluirSaida" prefHeight="32.0" prefWidth="54.0" text="Incluir">
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                          </JFXButton>
+                                          <HBox alignment="TOP_RIGHT" nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
+                                             <children>
+                                                <JFXTextField fx:id="searchSaida" alignment="TOP_LEFT" labelFloat="true" prefHeight="26.0" prefWidth="215.0" promptText="⌕">
+                                                   <HBox.margin>
+                                                      <Insets right="10.0" />
+                                                   </HBox.margin>
+                                                </JFXTextField>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </HBox>
+                                    <Region prefHeight="29.0" prefWidth="600.0" />
+                                    <JFXTreeTableView fx:id="listSaida" prefHeight="269.0" prefWidth="600.0" />
+                                 </children>
+                              </VBox>
+                           </content>
+                        </Tab>
+                     </tabs>
+                  </JFXTabPane>
+               </content>
+            </Tab>
+            <Tab text="Relatórios">
+               <content>
+                  <JFXTabPane>
+                     <tabs>
+                        <Tab text="Inventário">
+                           <content>
+                              <VBox fx:id="vboxRelatorioInventario" prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <HBox prefHeight="41.0" prefWidth="600.0">
+                                       <children>
+                                          <JFXButton fx:id="btnRelatorioInvetario" onAction="#setBtnGerarRelatorioInvetario" prefHeight="29.0" prefWidth="46.0" text="Gerar" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets left="10.0" right="10.0" top="30.0" />
+                                       </VBox.margin>
+                                    </HBox>
+                                 </children>
+                              </VBox>
+                           </content>
+                        </Tab>
+                        <Tab text="Categoria">
+                           <content>
+                              <VBox fx:id="vboxRelatorioCategoria" prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <Label fx:id="lblRelatorio" prefHeight="30.0" prefWidth="180.0" text="Relátorio por Categoria">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets left="10.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <JFXComboBox fx:id="comboBoxCategoriaRelatorio" labelFloat="true" prefHeight="26.0" prefWidth="126.0" promptText="Categoria">
+                                       <VBox.margin>
+                                          <Insets left="10.0" />
+                                       </VBox.margin>
+                                    </JFXComboBox>
+                                    <JFXButton fx:id="btnRelatorioCategoria" onAction="#setBtnGerarRelatorioCategoria" prefHeight="29.0" prefWidth="46.0" text="Gerar">
+                                       <VBox.margin>
+                                          <Insets left="10.0" top="20.0" />
+                                       </VBox.margin>
+                                    </JFXButton>
+                                 </children>
+                              </VBox>
+                           </content>
+                        </Tab>
+                        <Tab text="Entrada">
+                           <content>
+                              <VBox fx:id="vboxRelatorioEntrada" prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <Label fx:id="lblRelatorio" prefHeight="30.0" prefWidth="148.0" text="Relátorio de Entrada">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets left="10.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <HBox prefHeight="30.0" prefWidth="579.0">
+                                       <children>
+                                          <Label prefHeight="30.0" prefWidth="74.0" text="Data Inicial :">
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <JFXDatePicker fx:id="dataInicioEntrada" />
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="30.0" prefWidth="394.0">
+                                       <children>
+                                          <Label prefHeight="34.0" prefWidth="68.0" text="Data Final :">
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets left="10.0" right="7.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <JFXDatePicker fx:id="dataFimEntrada" prefHeight="48.0" prefWidth="171.2" />
+                                       </children>
+                                       <VBox.margin>
+                                          <Insets />
+                                       </VBox.margin>
+                                    </HBox>
+                                    <JFXButton fx:id="btnRelatorioEntrada" onAction="#setBtnGerarRelatorioEntrada" prefHeight="29.0" prefWidth="46.0" text="Gerar">
+                                       <VBox.margin>
+                                          <Insets left="10.0" top="20.0" />
+                                       </VBox.margin>
+                                    </JFXButton>
+                                 </children>
+                              </VBox>
+                           </content>
+                        </Tab>
+                        <Tab text="Saída">
+                           <content>
+                              <VBox fx:id="vboxRelatorioSaida" prefHeight="200.0" prefWidth="100.0">
+                                 <children>
+                                    <Label fx:id="lblRelatorio" prefHeight="30.0" prefWidth="180.0" text="Relátorio de Saída">
+                                       <font>
+                                          <Font name="System Bold" size="12.0" />
+                                       </font>
+                                       <VBox.margin>
+                                          <Insets left="10.0" />
+                                       </VBox.margin>
+                                    </Label>
+                                    <HBox prefHeight="30.0" prefWidth="394.0">
+                                       <children>
+                                          <Label fx:id="lblRelatorio11" prefHeight="30.0" prefWidth="74.0" text="Data Inicial :">
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets left="10.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <JFXDatePicker fx:id="dataInicioSaida" />
+                                       </children>
+                                    </HBox>
+                                    <HBox prefHeight="30.0" prefWidth="394.0">
+                                       <children>
+                                          <Label prefHeight="34.0" prefWidth="68.0" text="Data Final :">
+                                             <font>
+                                                <Font name="System Bold" size="12.0" />
+                                             </font>
+                                             <HBox.margin>
+                                                <Insets left="10.0" right="7.0" />
+                                             </HBox.margin>
+                                          </Label>
+                                          <JFXDatePicker fx:id="dataFimSaida" prefHeight="28.0" prefWidth="171.2" />
+                                       </children>
+                                    </HBox>
+                                    <JFXButton fx:id="btnRelatorioSaida" onAction="#setBtnGerarRelatorioSaida" prefHeight="29.0" prefWidth="46.0" text="Gerar">
+                                       <VBox.margin>
+                                          <Insets left="10.0" top="20.0" />
+                                       </VBox.margin>
+                                    </JFXButton>
+                                 </children>
+                              </VBox>
+                           </content>
+                        </Tab>
+                     </tabs>
+                  </JFXTabPane>
+               </content>
+            </Tab>
+         </tabs>
+         <VBox.margin>
+            <Insets />
+         </VBox.margin>
+         <opaqueInsets>
+            <Insets right="10.0" />
+         </opaqueInsets>
+      </JFXTabPane>
+      <AnchorPane fx:id="anchorPane" prefHeight="53.0" prefWidth="600.0" />
+   </children>
+</VBox>

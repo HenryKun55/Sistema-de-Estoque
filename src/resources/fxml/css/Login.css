@@ -1,0 +1,30 @@
+VBox {
+    -fx-background-color: #e8e1e1;
+}
+
+#btnEntrar {
+    -fx-background-color:#00BBD3;
+    -fx-background-radius:0;
+    -fx-border-color:transparent;
+    -fx-text-fill: WHITE;
+    -fx-font-size:15px;
+}
+
+.jfx-snackbar-content{
+    -fx-background-color:#e85555;
+    -fx-font-size:12px;
+    -fx-stroke:white;
+}
+
+.jfx-snackbar-toast {
+    -fx-text-fill: WHITE;
+}
+
+.jfx-snackbar-action {
+    -fx-background-color:#00BBD3;
+    -fx-text-fill: white;
+}
+
+.#anchorPane {
+    -fx-border-color:transparent;
+}
